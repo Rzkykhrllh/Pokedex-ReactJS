@@ -3,7 +3,7 @@ import Home from "../parts/Home";
 
 function Pokedex() {
   return (
-    <div>
+    <div className="bg-indigo-900 ">
       <Home />
     </div>
   );

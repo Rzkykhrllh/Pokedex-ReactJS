@@ -2,21 +2,22 @@ import React from "react";
 
 import Bulbasaur from "../images/1.png";
 import Circle from "../images/circle.png";
+import Tag from "./Tag";
 
 function Card({ picture, pokeName, tag, idx }) {
   return (
-    <div className="text-white bg-blue-300 rounded-xl">
+    <div className="text-white bg-white rounded-xl">
       {/* Image Wrapper */}
       <div className="relative top-0 flex py-3 bg-green-400 rounded-t-xl">
         <img
           src={Bulbasaur}
           alt="Pokemon"
-          className="relative z-10 mx-auto my-auto max-h-60"
+          className="relative z-10 mx-auto my-auto max-h-52"
         />
         <img
           src={Circle}
           alt="Pokemon"
-          className="absolute z-0 my-auto max-h-60"
+          className="absolute z-0 my-auto max-h-52"
           style={{
             position: "absolute",
             top: "50%",
@@ -27,13 +28,13 @@ function Card({ picture, pokeName, tag, idx }) {
       </div>
 
       {/* Data Wrapper */}
-      <div className="my-3">
-        <h3 className="mb-2 text-2xl font-bold ">{pokeName}</h3>
+      <div className="mt-2 mb-3">
+        <h3 className="mb-2 text-2xl font-bold " style={{ color: "#202024" }}>
+          {pokeName}
+        </h3>
         <div id={idx + "tag"} className="flex flex-row justify-center gap-x-3">
           {tag.map((pokeTag, idx) => (
-            <div className="px-2 font-medium bg-green-300 rounded-md">
-              {pokeTag}
-            </div>
+            <Tag pokeTag={pokeTag} />
           ))}
         </div>
       </div>

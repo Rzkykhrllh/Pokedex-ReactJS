@@ -30,16 +30,16 @@ const data = [
   {
     pokeName: "Bulbasaur",
     picture: Bulbasaur,
-    tag: ["Grass", "Poison"],
+    tag: ["Fire", "Bug"],
   },
   {
     pokeName: "Bulbasaur",
     picture: Bulbasaur,
-    tag: ["Grass", "Poison"],
+    tag: ["Normal", "Water"],
   },
   {
     pokeName: "Bulbasaur",
     picture: Bulbasaur,
-    tag: ["Grass", "Poison"],
+    tag: ["Flying", "Dark"],
   },
 ];
