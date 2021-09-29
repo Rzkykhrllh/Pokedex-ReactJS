@@ -14,22 +14,26 @@ function Home() {
 
     setLoadMore(data.next);
 
-    const createPokemonObject = (result) => {
-      result.map(async (item, idx) => {
-        const res = await fetch(
-          `https://pokeapi.co/api/v2/pokemon/${item.name}`
-        );
-
-        const data = await res.json();
-
-        setAllPokemon((currentList) => [...currentList, data]);
-      });
-    };
-
-    createPokemonObject(data.results);
-    await console.log("all pokemon", allPokemon);
-
     console.log(data);
+
+    const fetchedData = await createPokemonObject(data.results);
+    console.log("ayam");
+    console.log(fetchedData);
+    setAllPokemon((currentList) => [...currentList, ...ayam]);
+  };
+
+  const createPokemonObject = (result) => {
+    let promiseArray = [];
+
+    result.forEach(async (item, idx) => {
+      promiseArray.push(
+        fetch(`https://pokeapi.co/api/v2/pokemon/${item.name}`).then(
+          (response) => response.json()
+        )
+      );
+    });
+
+    return Promise.all(promiseArray);
   };
 
   useEffect(() => {
@@ -58,26 +62,3 @@ function Home() {
 }
 
 export default Home;
-
-const data = [
-  {
-    pokeName: "Bulbasaur",
-    picture: "../images/1.png",
-    tag: ["Grass", "Poison"],
-  },
-  {
-    pokeName: "Bulbasaur",
-    picture: Bulbasaur,
-    tag: ["Fire", "Bug"],
-  },
-  {
-    pokeName: "Bulbasaur",
-    picture: Bulbasaur,
-    tag: ["Normal", "Water"],
-  },
-  {
-    pokeName: "Bulbasaur",
-    picture: Bulbasaur,
-    tag: ["Flying", "Dark"],
-  },
-];
