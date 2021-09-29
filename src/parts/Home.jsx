@@ -19,7 +19,7 @@ function Home() {
     const fetchedData = await createPokemonObject(data.results);
     console.log("ayam");
     console.log(fetchedData);
-    setAllPokemon((currentList) => [...currentList, ...ayam]);
+    setAllPokemon((currentList) => [...currentList, ...fetchedData]);
   };
 
   const createPokemonObject = (result) => {
