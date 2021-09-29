@@ -2,6 +2,7 @@ import React from "react";
 
 import Bulbasaur from "../images/1.png";
 import Circle from "../images/circle.png";
+import PokemonImageWrapper from "./PokemonImageWrapper";
 import Tag from "./Tag";
 
 function Card({ picture, pokeName, tag, idx }) {
@@ -10,10 +11,22 @@ function Card({ picture, pokeName, tag, idx }) {
       return t.charAt(0).toUpperCase() + t.substr(1).toLowerCase();
     });
   }
+
+  function formatId(number) {
+    const x = number / 10;
+    console.log(x);
+    if (number / 10 < 1) {
+      return `#00${number}`;
+    } else if (number / 10 < 10) {
+      return `#0${number}`;
+    } else return `#${number}`;
+  }
+
   return (
     <div className="text-white bg-white rounded-xl">
       {/* Image Wrapper */}
-      <div className="relative top-0 flex py-3 bg-green-400 rounded-t-xl">
+
+      <PokemonImageWrapper tag={toTitles(tag[0].type.name)}>
         <img
           src={picture}
           alt="Pokemon"
@@ -30,7 +43,8 @@ function Card({ picture, pokeName, tag, idx }) {
             transform: "translate(-50%, -50%)",
           }}
         />
-      </div>
+        <h2 className="absolute text-xl opacity-50 left-5">{formatId(idx)}</h2>
+      </PokemonImageWrapper>
 
       {/* Data Wrapper */}
       <div className="mt-2 mb-3">

@@ -37,9 +37,9 @@ function Home() {
   }, []);
 
   //   panggil lagi kalau loadmore keganti
-  useEffect(() => {
-    getAllPokemon();
-  }, [loadMore]);
+  // useEffect(() => {
+  //   getAllPokemon();
+  // }, [loadMore]);
 
   return (
     <section className="px-10 x">
