@@ -15,11 +15,12 @@ function Home() {
     const data = await res.json();
 
     // console.log(data.next);
-    await setLoadMore(data.next);
+    setLoadMore(data.next);
 
     const fetchedData = await createPokemonObject(data.results);
     // console.log("ayam", loadMore);
     // console.log(fetchedData);
+    console.log("kenapa 2 kali dah");
     setAllPokemon((currentList) => [...currentList, ...fetchedData]);
   };
 
@@ -38,7 +39,7 @@ function Home() {
   };
 
   useEffect(() => {
-    getAllPokemon();
+    // getAllPokemon();
   }, []);
 
   useEffect(() => {
