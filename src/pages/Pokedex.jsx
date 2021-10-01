@@ -4,7 +4,7 @@ import TestingFetch from "../parts/TestingFetch";
 
 function Pokedex() {
   return (
-    <div className="bg-black">
+    <div className="bg-white">
       <Home />
       {/* <TestingFetch /> */}
     </div>

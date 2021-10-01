@@ -1,7 +1,7 @@
 import React from "react";
 
 function PokemonImageWrapper(props) {
-  console.log(props);
+  // console.log(props);
 
   const pokeTag = props.tag;
 
@@ -44,7 +44,7 @@ function PokemonImageWrapper(props) {
           ? "bg-steel"
           : pokeTag === "Water"
           ? "bg-water"
-          : "") + ` relative top-0 flex py-3  rounded-t-xl`
+          : "") + ` relative top-0 flex py-3  rounded-t-xl overflow-hidden`
       }
     >
       {props.children}

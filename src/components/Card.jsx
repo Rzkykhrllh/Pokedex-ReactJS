@@ -14,7 +14,7 @@ function Card({ picture, pokeName, tag, idx }) {
 
   function formatId(number) {
     const x = number / 10;
-    console.log(x);
+    // console.log(x);
     if (number / 10 < 1) {
       return `#00${number}`;
     } else if (number / 10 < 10) {
@@ -23,7 +23,7 @@ function Card({ picture, pokeName, tag, idx }) {
   }
 
   return (
-    <div className="text-white bg-white rounded-xl">
+    <div className="text-white bg-white border-2 rounded-xl drop-shadow-2xl">
       {/* Image Wrapper */}
 
       <PokemonImageWrapper tag={toTitles(tag[0].type.name)}>
@@ -53,7 +53,7 @@ function Card({ picture, pokeName, tag, idx }) {
         </h3>
         <div id={idx + "tag"} className="flex flex-row justify-center gap-x-3">
           {tag.map((pokeTag, idx) => (
-            <Tag pokeTag={toTitles(pokeTag.type.name)} />
+            <Tag pokeTag={toTitles(pokeTag.type.name)} key={idx} />
           ))}
         </div>
       </div>
