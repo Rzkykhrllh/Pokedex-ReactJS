@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Card from "../components/Card";
 import Bulbasaur from "../images/1.png";
+// import Modal from "react-modal";
+import Modal from "../components/Modal";
 
 function Home() {
   const [allPokemon, setAllPokemon] = useState([]);
@@ -8,7 +10,9 @@ function Home() {
     "https://pokeapi.co/api/v2/pokemon/?limit=20"
   );
 
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(""); // search box query
+  const [isOpen, setIsOpen] = useState(false); // modal
+  const [pokeData, setPokeData] = useState();
 
   const getAllPokemon = async () => {
     const res = await fetch(loadMore);
@@ -20,10 +24,11 @@ function Home() {
     const fetchedData = await createPokemonObject(data.results);
     // console.log("ayam", loadMore);
     // console.log(fetchedData);
-    console.log("kenapa 2 kali dah");
+    // console.log("kenapa 2 kali dah");
     setAllPokemon((currentList) => [...currentList, ...fetchedData]);
   };
 
+  // get pokemon detail data
   const createPokemonObject = (result) => {
     let promiseArray = [];
 
@@ -38,22 +43,37 @@ function Home() {
     return Promise.all(promiseArray);
   };
 
+  // fetch function
   useEffect(() => {
-    // getAllPokemon();
-  }, []);
-
-  useEffect(() => {
-    console.log(loadMore);
+    // console.log(loadMore);
     getAllPokemon();
   }, [allPokemon]);
 
+  // if pokemon data is ready
   useEffect(() => {
-    console.log(query);
-  }, [query]);
+    setIsOpen(true);
+  }, [pokeData]);
+
+  // modal toggle function
+  const openModal = (pokemonData) => {
+    // console.log(pokemonData);
+    setPokeData(pokemonData);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  if (isOpen) {
+    document.body.style.overflowY = "hidden";
+  } else {
+    document.body.style.overflowY = "visible";
+  }
 
   return (
-    <section className="relative">
-      <div className="fixed z-50 w-full bg-red-500">
+    <section className="relative" id="Pokemon">
+      {/* start of navbar */}
+      <div className="fixed top-0 z-50 w-full bg-red-500">
         <input
           type="text"
           onChange={(e) => setQuery(e.target.value)}
@@ -61,6 +81,14 @@ function Home() {
           className="h-10 p-5 border-0 "
         />
       </div>
+      {/* end of navbar */}
+
+      {/* start of modal */}
+      {}
+      {isOpen && <Modal closeModal={closeModal} pokemonData={pokeData} />}
+      {/* end of modal */}
+
+      {/* start of pokemon card container */}
       <div className="grid max-w-screen-xl grid-cols-1 gap-6 px-10 pt-5 mx-auto sm:grid-cols-2 md:grid-cols-3">
         {allPokemon
           .filter((pokeMon) => {
@@ -80,9 +108,12 @@ function Home() {
               pokeName={pokeMon.name}
               tag={pokeMon.types}
               idx={pokeMon.id}
+              openModal={openModal}
+              pokemon={pokeMon}
             />
           ))}
       </div>
+      {/* end of pokemon card container*/}
     </section>
   );
 }

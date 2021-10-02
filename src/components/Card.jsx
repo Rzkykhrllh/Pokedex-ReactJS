@@ -5,7 +5,7 @@ import Circle from "../images/circle.png";
 import PokemonImageWrapper from "./PokemonImageWrapper";
 import Tag from "./Tag";
 
-function Card({ picture, pokeName, tag, idx }) {
+function Card({ picture, pokeName, tag, idx, openModal, pokemon }) {
   function toTitles(s) {
     return s.replace(/\w\S*/g, function (t) {
       return t.charAt(0).toUpperCase() + t.substr(1).toLowerCase();
@@ -23,7 +23,10 @@ function Card({ picture, pokeName, tag, idx }) {
   }
 
   return (
-    <div className="text-white bg-white border-2 rounded-xl drop-shadow-2xl">
+    <div
+      className="text-white bg-white border-2 rounded-xl drop-shadow-2xl"
+      onClick={(e) => openModal(pokemon)}
+    >
       {/* Image Wrapper */}
 
       <PokemonImageWrapper tag={toTitles(tag[0].type.name)}>
@@ -31,6 +34,7 @@ function Card({ picture, pokeName, tag, idx }) {
           src={picture}
           alt="Pokemon"
           className="relative z-10 mx-auto my-auto max-h-52"
+          // style={{ zIndex: 0 }}
         />
         <img
           src={Circle}
