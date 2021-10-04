@@ -3,6 +3,11 @@ import Card from "../components/Card";
 import Bulbasaur from "../images/1.png";
 // import Modal from "react-modal";
 import Modal from "../components/Modal";
+import bg from "../images/bg-grid.png";
+
+import logo from "../images/pokedex.png";
+import search from "../images/search.svg";
+import Navbar from "./Navbar";
 
 function Home() {
   const [allPokemon, setAllPokemon] = useState([]);
@@ -71,25 +76,15 @@ function Home() {
   }
 
   return (
-    <section className="relative" id="Pokemon">
-      {/* start of navbar */}
-      <div className="fixed top-0 z-50 w-full bg-red-500">
-        <input
-          type="text"
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="search your pokemon"
-          className="h-10 p-5 border-0 "
-        />
-      </div>
-      {/* end of navbar */}
-
+    <section className="relative" id="Pokemon" style={{ backgroundImage: bg }}>
+      <Navbar setQuery={setQuery} />
       {/* start of modal */}
       {}
       {isOpen && <Modal closeModal={closeModal} pokemonData={pokeData} />}
       {/* end of modal */}
 
       {/* start of pokemon card container */}
-      <div className="grid max-w-screen-xl grid-cols-1 gap-6 px-10 pt-5 mx-auto sm:grid-cols-2 md:grid-cols-3">
+      <div className="grid max-w-screen-xl grid-cols-1 gap-6 px-10 pt-16 mx-auto mt-6 sm:grid-cols-2 md:grid-cols-4">
         {allPokemon
           .filter((pokeMon) => {
             if (query === "") {
@@ -104,6 +99,7 @@ function Home() {
           .map((pokeMon, idx) => (
             <Card
               key={idx}
+              //
               picture={pokeMon.sprites.other["official-artwork"].front_default}
               pokeName={pokeMon.name}
               tag={pokeMon.types}

@@ -34,7 +34,7 @@ function Card({ picture, pokeName, tag, idx, openModal, pokemon }) {
           src={picture}
           alt="Pokemon"
           className="relative z-10 mx-auto my-auto max-h-52"
-          // style={{ zIndex: 0 }}
+          // style={{ width: "250px" }}
         />
         <img
           src={Circle}
