@@ -5,7 +5,7 @@ import bg from "../images/bg-grid.png";
 function Pokedex() {
   return (
     <div
-      className="bg-center bg-top"
+      className="bg-top "
       // style={{ backgroundImage: bg }}
       style={{ backgroundImage: "url('/bg-grid.png')" }}
     >

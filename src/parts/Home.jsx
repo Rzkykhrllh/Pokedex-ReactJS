@@ -5,8 +5,6 @@ import Bulbasaur from "../images/1.png";
 import Modal from "../components/Modal";
 import bg from "../images/bg-grid.png";
 
-import logo from "../images/pokedex.png";
-import search from "../images/search.svg";
 import Navbar from "./Navbar";
 
 function Home() {
@@ -86,7 +84,7 @@ function Home() {
       {/* end of modal */}
 
       {/* start of pokemon card container */}
-      <div className="grid max-w-screen-xl grid-cols-1 gap-6 px-10 pt-16 mx-auto mt-6 sm:grid-cols-2 md:grid-cols-4">
+      <div className="grid max-w-screen-xl grid-cols-1 gap-6 px-10 pt-20 mx-auto sm:grid-cols-2 md:grid-cols-4">
         {allPokemon
           .filter((pokeMon) => {
             if (query === "") {
