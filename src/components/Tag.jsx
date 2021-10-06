@@ -43,7 +43,7 @@ function Tag({ pokeTag }) {
             ? "bg-steel"
             : pokeTag === "Water"
             ? "bg-water"
-            : "") + ` px-2 font-medium  rounded-md`
+            : "") + ` px-2 font-medium  rounded-md text-white`
         }
       >
         {pokeTag}

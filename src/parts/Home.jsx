@@ -80,7 +80,9 @@ function Home() {
       <Navbar setQuery={setQuery} />
       {/* start of modal */}
       {}
-      {isOpen && <Modal closeModal={closeModal} pokemonData={pokeData} />}
+      {isOpen && pokeData != null && (
+        <Modal closeModal={closeModal} pokemonData={pokeData} />
+      )}
       {/* end of modal */}
 
       {/* start of pokemon card container */}
