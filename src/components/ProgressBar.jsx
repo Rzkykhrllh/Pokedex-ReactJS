@@ -7,16 +7,32 @@ function ProgressBar({ done }) {
     const newStyle = {
       opacity: 1,
       width: `${done}%`,
-      //   transition: "1s ease 0.3s;",
-      //   background: "linear-gradient(to left, #F2709C, #FF9472)",
     };
 
     setStyle(newStyle);
-  }, 100);
+  }, 1);
 
   return (
-    <div className="bg-blue-200 " id="progress">
-      <div className="h-3 progress-done" style={style} id="progressDone">
+    <div
+      className="h-3"
+      id="progress"
+      className="w-full my-auto bg-gray-200 rounded-md"
+    >
+      <div
+        className={
+          (done <= 20
+            ? " bg-red"
+            : done <= 40
+            ? " bg-orange"
+            : done <= 60
+            ? "bg-yellow"
+            : done <= 60
+            ? " bg-lime"
+            : "bg-green") + ` h-3 rounded-md progress-done`
+        }
+        style={style}
+        id="progressDone"
+      >
         {/* {done}% */}
         <p className="opacity-0">.</p>
       </div>

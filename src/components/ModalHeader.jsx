@@ -1,6 +1,8 @@
 import React from "react";
 import Tag from "./Tag";
 
+import topUpperCase from "../utils/toUpperCase";
+
 function ModalHeader({ pokemonData }) {
   return (
     <div id="header">
@@ -12,11 +14,11 @@ function ModalHeader({ pokemonData }) {
 
       <div className="mt-4">
         <h3 className="mb-2 text-2xl font-bold " style={{ color: "#202024" }}>
-          {toTitles(pokemonData.name)}
+          {topUpperCase(pokemonData.name)}
         </h3>
         <div id={"tag"} className="flex flex-row justify-center gap-x-3">
           {pokemonData.types.map((pokeTag, idx) => (
-            <Tag pokeTag={toTitles(pokeTag.type.name)} key={idx} />
+            <Tag pokeTag={topUpperCase(pokeTag.type.name)} key={idx} />
           ))}
         </div>
       </div>
@@ -46,9 +48,3 @@ function ModalHeader({ pokemonData }) {
 }
 
 export default ModalHeader;
-
-function toTitles(s) {
-  return s.replace(/\w\S*/g, function (t) {
-    return t.charAt(0).toUpperCase() + t.substr(1).toLowerCase();
-  });
-}

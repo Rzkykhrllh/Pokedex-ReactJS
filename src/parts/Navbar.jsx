@@ -5,7 +5,7 @@ import search from "../images/search.svg";
 function Navbar({ setQuery }) {
   return (
     <div
-      className="fixed top-0 z-50 flex w-full bg-red-500 "
+      className="fixed top-0 z-50 flex w-full bg-white bg-red-500"
       style={{ height: "60px" }}
     >
       <div className="flex justify-between w-full max-w-screen-xl px-10 mx-auto my-auto align-middle ">
